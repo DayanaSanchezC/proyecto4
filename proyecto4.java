@@ -148,7 +148,7 @@ public class proyecto4 {
                                 simbolos[pts].setValor(String.valueOf(op1));
                             }
                                 break;
-                            case "-31": {
+                            case "-31":
                                 boolean r = false;
                                 if (Integer.parseInt(operando1.getLexema()) < Integer.parseInt(operando2.getLexema()))
                                     r = true;
@@ -158,10 +158,10 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                            }
+
                                 break;
-                            case "-32": {
-                                boolean r = false;
+                            case "-32":
+                                r = false;
                                 if (Integer.parseInt(operando1.getLexema()) <= Integer.parseInt(operando2.getLexema()))
                                     r = true;
 
@@ -170,10 +170,10 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                            }
+
                                 break;
-                            case "-33": {
-                                boolean r = false;
+                            case "-33":
+                                r = false;
                                 if (Integer.parseInt(operando1.getLexema()) > Integer.parseInt(operando2.getLexema()))
                                     r = true;
 
@@ -182,10 +182,10 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                            }
+
                                 break;
-                            case "-34": {
-                                boolean r = false;
+                            case "-34":
+                                r = false;
                                 if (Integer.parseInt(operando1.getLexema()) >= Integer.parseInt(operando2.getLexema()))
                                     r = true;
 
@@ -194,10 +194,10 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                            }
+
                                 break;
-                            case "-35": {
-                                boolean r = false;
+                            case "-35":
+                                r = false;
                                 if (Integer.parseInt(operando1.getLexema()) == Integer.parseInt(operando2.getLexema()))
                                     r = true;
 
@@ -206,10 +206,10 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                            }
+
                                 break;
-                            case "-36": {
-                                boolean r = false;
+                            case "-36":
+                                r = false;
                                 if (Integer.parseInt(operando1.getLexema()) != Integer.parseInt(operando2.getLexema()))
                                     r = true;
 
@@ -218,7 +218,7 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                            }
+
                             default:
                                 System.err.println("Operador no válido: " + operador.getToken());
 
@@ -267,42 +267,66 @@ public class proyecto4 {
                                 if (Double.parseDouble(operando1.getLexema()) < Double
                                         .parseDouble(operando2.getLexema()))
                                     r = true;
-                                Pilaej.push(new Token(String.valueOf(r), null, null, null));
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
                                 break;
                             case "-32":
                                 r = false;
                                 if (Double.parseDouble(operando1.getLexema()) <= Double
                                         .parseDouble(operando2.getLexema()))
                                     r = true;
-                                Pilaej.push(new Token(String.valueOf(r), null, null, null));
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
                                 break;
                             case "-33":
                                 r = false;
                                 if (Double.parseDouble(operando1.getLexema()) > Double
                                         .parseDouble(operando2.getLexema()))
                                     r = true;
-                                Pilaej.push(new Token(String.valueOf(r), null, null, null));
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
                                 break;
                             case "-34":
                                 r = false;
                                 if (Double.parseDouble(operando1.getLexema()) >= Double
                                         .parseDouble(operando2.getLexema()))
                                     r = true;
-                                Pilaej.push(new Token(String.valueOf(r), null, null, null));
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
                                 break;
                             case "-35":
                                 r = false;
                                 if (Double.parseDouble(operando1.getLexema()) == Double
                                         .parseDouble(operando2.getLexema()))
                                     r = true;
-                                Pilaej.push(new Token(String.valueOf(r), null, null, null));
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
                                 break;
                             case "-36":
                                 r = false;
                                 if (Double.parseDouble(operando1.getLexema()) != Double
                                         .parseDouble(operando2.getLexema()))
                                     r = true;
-                                Pilaej.push(new Token(String.valueOf(r), null, null, null));
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
                                 break;
                             default:
                                 System.err.println("Operador no válido: " + operador.getToken());
@@ -320,8 +344,28 @@ public class proyecto4 {
 
                                     || operando2.getToken() == null)) {
                         switch (operador.getToken()) {
-                            case "-41":
+                            case "-35":
                                 boolean r = false;
+                                if (operando1.getToken().equals(operando2.getToken()))
+                                    r = true;
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
+                                break;
+                            case "-36":
+                                r = false;
+                                if (!operando1.getToken().equals(operando2.getToken()))
+                                    r = true;
+                                if (r == true) {
+                                    Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
+                                } else {
+                                    Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
+                                }
+                                break;
+                            case "-41":
+                                r = false;
                                 if (operando1.getToken().equals("-64")
                                         && operando2.getToken().equals("-64"))
                                     r = true;
@@ -331,8 +375,6 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                                System.out.println(r);
-
                                 break;
                             case "-42":
                                 r = false;
@@ -345,8 +387,6 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
-                                System.out.println(r);
-
                                 break;
                             default:
                                 System.err.println("Operador no válido: " + operador.getToken());
@@ -520,4 +560,3 @@ public class proyecto4 {
     }
 
 }
-
