@@ -1,3 +1,4 @@
-A              -51   0       Main      
-B      -51   0       Main      
-x               -51   0       Main      
+radio%              -52   0.0       Main
+radiocuadrado%      -52   0.0       Main
+area%               -52   0.0       Main
+cumple#             -54   true      Main

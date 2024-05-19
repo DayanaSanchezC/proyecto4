@@ -344,9 +344,16 @@ public class proyecto4 {
 
                                     || operando2.getToken() == null)) {
                         switch (operador.getToken()) {
+                            case "-26":
+                                boolean op1 = Boolean.parseBoolean(operando1.getLexema());
+                                boolean op2 = Boolean.parseBoolean(operando2.getLexema());
+                                op1 = op2;
+                                pts = Integer.parseInt(operando1.getPts());
+                                simbolos[pts].setValor(String.valueOf(op1));
+                                break;
                             case "-35":
                                 boolean r = false;
-                                if (operando1.getToken().equals(operando2.getToken()))
+                                if (operando1.getLexema().equals(operando2.getLexema()))
                                     r = true;
                                 if (r == true) {
                                     Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
@@ -356,7 +363,7 @@ public class proyecto4 {
                                 break;
                             case "-36":
                                 r = false;
-                                if (!operando1.getToken().equals(operando2.getToken()))
+                                if (!operando1.getLexema().equals(operando2.getLexema()))
                                     r = true;
                                 if (r == true) {
                                     Pilaej.push(new Token(String.valueOf(r), "-64", null, null));
@@ -478,7 +485,7 @@ public class proyecto4 {
                 String[] partes = linea.split(",", 4);
                 if (partes.length != 4) {
                     System.err.println("Error, se espera que este en el siguiente formato\n" +
-                            "Lexema,Token,Posicion,Linea");
+                            "Lexema,Token,Posicion,Linea" + linea);
                     continue;
                 }
                 String lexema = partes[0].trim();
