@@ -92,6 +92,7 @@ public class proyecto4 {
                     Token operando = Pilaej.pop();
                     boolean r = !Boolean.parseBoolean(operando.getLexema());
                     Pilaej.push(new Token(String.valueOf(r), null, null, null));
+                    System.out.println(r);
                 } else {
                     Token operador = token;
                     Token operando2 = Pilaej.pop();
@@ -330,11 +331,13 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
+                                System.out.println(r);
+
                                 break;
                             case "-42":
                                 r = false;
                                 if ((operando1.getToken().equals("-64"))
-                                        || (operando2.getLexema().equals("-64")))
+                                        || (operando2.getToken().equals("-64")))
                                     r = true;
 
                                 if (r == true) {
@@ -342,6 +345,8 @@ public class proyecto4 {
                                 } else {
                                     Pilaej.push(new Token(String.valueOf(r), "-65", null, null));
                                 }
+                                System.out.println(r);
+
                                 break;
                             default:
                                 System.err.println("Operador no válido: " + operador.getToken());
