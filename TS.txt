@@ -1,4 +1,4 @@
-radio%              -52   0.0       Main
-radiocuadrado%      -52   0.0       Main
-area%               -52   0.0       Main
-cumple#             -54   true      Main
+radio%,-52,10.0,Main
+radiocuadrado%,-52,100.0,Main
+area%,-52,314.15999999999997,Main
+cumple#,-54,false,Main

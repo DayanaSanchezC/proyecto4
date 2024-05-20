@@ -96,6 +96,7 @@ public class proyecto4 {
                 } else {
                     Token operador = token;
                     Token operando2 = Pilaej.pop();
+
                     Token operando1 = Pilaej.pop();
                     if (operando2.getPts() != null && !operando2.getPts().equals("-1")) {
                         pts = Integer.parseInt(operando2.getPts());
@@ -415,7 +416,7 @@ public class proyecto4 {
                 pc = Integer.parseInt(Pilaej.pop().getLexema()) - 1;
             }
         }
-
+        sobreescribirArchivoSimbolos(simbolos);
     }
 
     private static String esOperador(String token) {
@@ -555,6 +556,17 @@ public class proyecto4 {
         }
         return direcciones;
 
+    }
+
+    public static void sobreescribirArchivoSimbolos(Simbolo[] simbolos) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("TS.txt"))) {
+            for (Simbolo simbolo : simbolos) {
+                bw.write(simbolo.getLexema()+"," +simbolo.getToken()+","+simbolo.getValor()+","+ simbolo.getAmbito());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static int contarLineas(String nombreArchivo) throws IOException {
