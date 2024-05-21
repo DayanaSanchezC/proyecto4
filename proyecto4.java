@@ -126,6 +126,7 @@ public class proyecto4 {
                                             null));
                                 } else {
                                     System.err.println("No se pueden realizar diviciones entre 0");
+                                    System.exit(0);
                                 }
                                 break;
                             }
@@ -240,8 +241,10 @@ public class proyecto4 {
                                 if (operando1.getLexema().equals("0"))
                                     Pilaej.push(new Token(String.valueOf(Double.parseDouble(operando1.getLexema())
                                             / Double.parseDouble(operando2.getLexema())), null, null, null));
-                                else
+                                else{
                                     System.err.println("No se pueden realizar diviciones entre 0");
+                                    System.exit(0);
+                                }
                                 break;
                             case "-23":
                                 Pilaej.push(new Token(String.valueOf(Double.parseDouble(operando1.getLexema())
