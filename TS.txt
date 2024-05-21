@@ -1,4 +1,3 @@
-radio%,-52,10.0,Main
-radiocuadrado%,-52,100.0,Main
-area%,-52,314.15999999999997,Main
-cumple#,-54,false,Main
+A,-51,0,Main
+B,-51,0,Main
+x,-51,0,Main

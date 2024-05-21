@@ -415,8 +415,16 @@ public class proyecto4 {
             } else if (token.getToken().equals("-7") || token.getLexema().equals("FIN-MIENTRAS")) {
                 pc = Integer.parseInt(Pilaej.pop().getLexema()) - 1;
             }
+       
         }
         sobreescribirArchivoSimbolos(simbolos);
+        System.out.println("\nTabla de Símbolos:");
+        for (Simbolo simbolo : simbolos) {
+            System.out.println(simbolo.getLexema() +
+                    "," + simbolo.getToken() +
+                    "," + simbolo.getValor() +
+                    "," + simbolo.getAmbito());
+        }
     }
 
     private static String esOperador(String token) {
@@ -534,7 +542,7 @@ public class proyecto4 {
         Direcciones[] direcciones = null;
         try (BufferedReader br = new BufferedReader(new FileReader("TD.txt"))) {
             String linea;
-            int numLineas = contarLineas("TS.txt");
+            int numLineas = contarLineas("TD.txt");
             direcciones = new Direcciones[numLineas];
             int i = 0;
             while ((linea = br.readLine()) != null) {
@@ -561,7 +569,8 @@ public class proyecto4 {
     public static void sobreescribirArchivoSimbolos(Simbolo[] simbolos) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("TS.txt"))) {
             for (Simbolo simbolo : simbolos) {
-                bw.write(simbolo.getLexema()+"," +simbolo.getToken()+","+simbolo.getValor()+","+ simbolo.getAmbito());
+                bw.write(simbolo.getLexema() + "," + simbolo.getToken() + "," + simbolo.getValor() + ","
+                        + simbolo.getAmbito());
                 bw.newLine();
             }
         } catch (IOException e) {
