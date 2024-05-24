@@ -5,10 +5,16 @@ import javax.swing.*;
 public class proyecto4 {
     public static void main(String[] args) {
         Stack<Token> Pilaej = new Stack<Token>();
-        String nombreArchivo = seleccionarArchivo();
-        Token[] tokens = procesarArchivo(nombreArchivo);
-        Simbolo[] simbolos = archivoSimbolos();
-        Direcciones[] direcciones = archivoDirecciones();
+        JOptionPane.showMessageDialog(null, "Seleccione el archivo VCI");
+        String VCI = seleccionarArchivo();
+        JOptionPane.showMessageDialog(null, "Seleccione el archivo Tabla de Simbolos");
+        String TSimbolos = seleccionarArchivo();
+        JOptionPane.showMessageDialog(null, "Seleccione el archivo Tabla de Direcciones");
+        String TDirecciones = seleccionarArchivo();
+
+        Token[] tokens = procesarArchivo(VCI);
+        Simbolo[] simbolos = archivoSimbolos(TSimbolos);
+        Direcciones[] direcciones = archivoDirecciones(TDirecciones);
         int ipc = Integer.parseInt(direcciones[0].getvci());
         int pts;
         System.out.println("Pantalla");
@@ -338,6 +344,25 @@ public class proyecto4 {
 
                         }
                     }
+                    
+                  if ((operando1.getToken() != null && operando1.getToken().equals("-53")
+                    || operando1.getToken() != null && operando1.getToken().equals("-63")
+                    || operando1.getToken() == null)
+                    && (operando2.getToken() != null && operando2.getToken().equals("-53")
+                            || operando2.getToken() != null && operando2.getToken().equals("-63")
+                            || operando2.getToken() == null)) {
+                                switch (operador.getToken()) {
+                                    case "-26":
+                                        String op1 = operando1.getLexema();
+                                        String op2 = operando2.getLexema();
+                                        op1 = op2;
+                                        pts = Integer.parseInt(operando1.getPts());
+                                        simbolos[pts].setValor(String.valueOf(op1));
+                                        break;
+                            }
+                        }
+
+
                     if ((operando1.getToken() != null && operando1.getToken().equals("-54")
                             || operando1.getToken() != null && operando1.getToken().equals("-64")
                             || operando1.getToken() != null && operando1.getToken().equals("-65")
@@ -486,11 +511,11 @@ public class proyecto4 {
         }
     }
 
-    public static Token[] procesarArchivo(String nombreArchivo) {
+    public static Token[] procesarArchivo(String VCI) {
         Token[] tokens = null;
-        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(VCI))) {
             String linea;
-            int numLineas = contarLineas(nombreArchivo);
+            int numLineas = contarLineas(VCI);
             tokens = new Token[numLineas];
             int i = 0;
             while ((linea = br.readLine()) != null) {
@@ -513,9 +538,9 @@ public class proyecto4 {
         return tokens;
     }
 
-    public static Simbolo[] archivoSimbolos() {
+    public static Simbolo[] archivoSimbolos(String TSimbolos) {
         Simbolo[] simbolo = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("TS.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(TSimbolos))) {
             String linea;
             int numLineas = contarLineas("TS.txt");
             simbolo = new Simbolo[numLineas];
@@ -523,7 +548,7 @@ public class proyecto4 {
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split("[,\\s]+", 4);
                 if (partes.length != 4) {
-                    System.err.println("Error, se espera que este en el siguiente formato\n" +
+                    System.err.println("Error, se espera que este en el siguiente formato en la tabla de simbolos\n" +
                             "Lexema,Token,Posicion,Linea");
                     continue;
                 }
@@ -541,9 +566,9 @@ public class proyecto4 {
 
     }
 
-    public static Direcciones[] archivoDirecciones() {
+    public static Direcciones[] archivoDirecciones(String TDirecciones) {
         Direcciones[] direcciones = null;
-        try (BufferedReader br = new BufferedReader(new FileReader("TD.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(TDirecciones))) {
             String linea;
             int numLineas = contarLineas("TD.txt");
             direcciones = new Direcciones[numLineas];
@@ -551,7 +576,7 @@ public class proyecto4 {
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split("[,\\s]+", 4);
                 if (partes.length != 4) {
-                    System.err.println("Error, se espera que este en el siguiente formato\n" +
+                    System.err.println("Error, se espera que este en el siguiente formato en la tabla de Direcciones\n" +
                             "Lexema,Token,Posicion,Linea");
                     continue;
                 }
@@ -581,9 +606,9 @@ public class proyecto4 {
         }
     }
 
-    public static int contarLineas(String nombreArchivo) throws IOException {
+    public static int contarLineas(String VCI) throws IOException {
         int lineCount = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(VCI))) {
             while (reader.readLine() != null)
                 lineCount++;
         }

@@ -1,1 +1,1 @@
-hipotenusa@         -55   1         0         
+hipotenusa@,-55,1,0
