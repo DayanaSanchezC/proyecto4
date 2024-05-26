@@ -1,5 +1,3 @@
-numeroA&,-51,-10,Main
+numeroA&,-51,0,Main
 numeroB&,-51,0,Main
-resultado%,-52,38.3,Main
-condicion#,-54,true,Main
-mensaje$,-53,"Hola",Main
+
