@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class proyecto4 {
     public static void main(String[] args) {
-        Stack<Token> Pilaej = new Stack<Token>();
+        Stack<Token> Pilaej = new Stack<>();
         JOptionPane.showMessageDialog(null, "Seleccione el archivo VCI");
         String VCI = seleccionarArchivo();
         JOptionPane.showMessageDialog(null, "Seleccione el archivo Tabla de Simbolos");
@@ -106,13 +106,22 @@ public class proyecto4 {
                     Token operando1 = Pilaej.pop();
                     if (operando2.getPts() != null && !operando2.getPts().equals("-1")) {
                         pts = Integer.parseInt(operando2.getPts());
-                        operando2 = new Token(simbolos[pts].getValor(), simbolos[pts].getToken(), operando2.getPts(),
-                                null);
+                        if (simbolos[pts]!= null) {
+                            operando2 = new Token(simbolos[pts].getValor(), simbolos[pts].getToken(),
+                                    operando2.getPts(), null);
+                        }
+                        else
+                        JOptionPane.showMessageDialog(null, "La variable no se encontro en Tabla de Simbolos");
                     }
                     if (operando1.getPts() != null && !operando1.getPts().equals("-1")) {
                         pts = Integer.parseInt(operando1.getPts());
-                        operando1 = new Token(simbolos[pts].getValor(), simbolos[pts].getToken(), operando1.getPts(),
-                                null);
+                        if (simbolos[pts]!= null) {
+                            operando1 = new Token(simbolos[pts].getValor(), simbolos[pts].getToken(),
+                                    operando1.getPts(), null);
+                        }
+                        else
+                        JOptionPane.showMessageDialog(null, "La variable no se encontro en Tabla de Simbolos");
+                        
                     }
                     if ((operando1.getToken() != null && operando1.getToken().equals("-51")
                             || operando1.getToken() != null && operando1.getToken().equals("-61")
@@ -266,7 +275,7 @@ public class proyecto4 {
 
                                 break;
                             case "-26":
-                                double op1 = Double.parseDouble(operando1.getLexema());
+                                double op1 ;
                                 double op2 = Double.parseDouble(operando2.getLexema());
                                 op1 = op2;
                                 pts = Integer.parseInt(operando1.getPts());
@@ -353,7 +362,7 @@ public class proyecto4 {
                             || operando2.getToken() == null)) {
                                 switch (operador.getToken()) {
                                     case "-26":
-                                        String op1 = operando1.getLexema();
+                                        String op1;
                                         String op2 = operando2.getLexema();
                                         op1 = op2;
                                         pts = Integer.parseInt(operando1.getPts());
@@ -374,7 +383,7 @@ public class proyecto4 {
                                     || operando2.getToken() == null)) {
                         switch (operador.getToken()) {
                             case "-26":
-                                boolean op1 = Boolean.parseBoolean(operando1.getLexema());
+                                boolean op1;
                                 boolean op2 = Boolean.parseBoolean(operando2.getLexema());
                                 op1 = op2;
                                 pts = Integer.parseInt(operando1.getPts());
@@ -445,7 +454,7 @@ public class proyecto4 {
             }
        
         }
-        sobreescribirArchivoSimbolos(simbolos);
+        sobreescribirArchivoSimbolos(simbolos, TSimbolos);
         System.out.println("\nTabla de Símbolos:");
         for (Simbolo simbolo : simbolos) {
             System.out.println(simbolo.getLexema() +
@@ -542,7 +551,7 @@ public class proyecto4 {
         Simbolo[] simbolo = null;
         try (BufferedReader br = new BufferedReader(new FileReader(TSimbolos))) {
             String linea;
-            int numLineas = contarLineas("TS.txt");
+            int numLineas = contarLineas(TSimbolos);
             simbolo = new Simbolo[numLineas];
             int i = 0;
             while ((linea = br.readLine()) != null) {
@@ -570,7 +579,7 @@ public class proyecto4 {
         Direcciones[] direcciones = null;
         try (BufferedReader br = new BufferedReader(new FileReader(TDirecciones))) {
             String linea;
-            int numLineas = contarLineas("TD.txt");
+            int numLineas = contarLineas(TDirecciones);
             direcciones = new Direcciones[numLineas];
             int i = 0;
             while ((linea = br.readLine()) != null) {
@@ -594,8 +603,8 @@ public class proyecto4 {
 
     }
 
-    public static void sobreescribirArchivoSimbolos(Simbolo[] simbolos) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("TS.txt"))) {
+    public static void sobreescribirArchivoSimbolos(Simbolo[] simbolos,String TSimbolos) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(TSimbolos))) {
             for (Simbolo simbolo : simbolos) {
                 bw.write(simbolo.getLexema() + "," + simbolo.getToken() + "," + simbolo.getValor() + ","
                         + simbolo.getAmbito());
