@@ -546,7 +546,6 @@ public class proyecto4 {
         }
         return tokens;
     }
-
     public static Simbolo[] archivoSimbolos(String TSimbolos) {
         Simbolo[] simbolo = null;
         try (BufferedReader br = new BufferedReader(new FileReader(TSimbolos))) {
