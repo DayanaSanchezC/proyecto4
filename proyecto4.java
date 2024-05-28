@@ -554,7 +554,7 @@ public class proyecto4 {
             simbolo = new Simbolo[numLineas];
             int i = 0;
             while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split("[,\\s]+", 4);
+                String[] partes = linea.split(",", 4);
                 if (partes.length != 4) {
                     System.err.println("Error, se espera que este en el siguiente formato en la tabla de simbolos\n" +
                             "Lexema,Token,Posicion,Linea");

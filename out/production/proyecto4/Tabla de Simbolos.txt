@@ -1,5 +1,5 @@
 numeroA&,-51,0,Main
 numeroB&,-51,0,Main
 resultado%,-52,0.0,Main
-mensaje$,-53,null,Main
+mensaje$,-53,"Este es un mensaje.",es un mensaje.",Main
 condicion#,-54,false,Main
